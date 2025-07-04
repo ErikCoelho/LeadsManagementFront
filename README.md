@@ -2,6 +2,9 @@
 
 Interface moderna para gerenciamento de leads desenvolvida com Angular 19 e design responsivo.
 
+![Captura de tela 2025-07-04 112447](https://github.com/user-attachments/assets/d052c021-87a3-4fff-989e-95adc039a5fe)
+![Captura de tela 2025-07-04 112521](https://github.com/user-attachments/assets/ce731795-e0eb-4fb8-a5ff-c970c45db38d)
+
 
 
 ## 🎯 Funcionalidades
