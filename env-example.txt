@@ -1,0 +1,13 @@
+# Lead Management - Front-end Environment Variables
+# Copie este arquivo para .env e ajuste conforme necessário
+
+# API URL - URL do back-end
+API_URL=http://localhost:5000
+
+# Node Environment
+NODE_ENV=production
+
+# Exemplos para diferentes ambientes:
+# API_URL=https://api.leadmanagement.com  # Produção
+# API_URL=http://localhost:8080          # Porta diferente
+# API_URL=http://192.168.1.100:5000      # IP da máquina na rede 
