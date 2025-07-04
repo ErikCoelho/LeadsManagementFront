@@ -1,59 +1,94 @@
-# LeadManagementFront
+# Lead Management Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
+Este é o frontend Angular do sistema de gerenciamento de leads.
 
-## Development server
+## Funcionalidades
 
-To start a local development server, run:
+- **Aba Invited**: Exibe todos os leads com status "Waiting" (aguardando)
+  - Mostra informações básicas do contato (primeiro nome, data, localização, categoria, ID, descrição, preço)
+  - Botões para aceitar ou recusar leads
+  - Ao aceitar: se preço > $500, aplica 10% de desconto automaticamente
 
+- **Aba Accepted**: Exibe todos os leads com status "Accepted" (aceitos)
+  - Mostra informações completas do contato (nome completo, telefone, email)
+  - Todas as outras informações do lead
+
+## Pré-requisitos
+
+- Node.js 18+ 
+- Angular CLI 19+
+- API .NET Core rodando (veja instruções na pasta `back/`)
+
+## Instalação
+
+1. Navegue até a pasta do frontend:
 ```bash
-ng serve
+cd front/LeadManagementFront
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+2. Instale as dependências:
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Configuração
 
-```bash
-ng generate --help
+1. Verifique se a URL da API está correta em `src/environments/environment.ts`:
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'https://localhost:7074'  // Ajuste conforme sua API
+};
 ```
 
-## Building
+2. Certifique-se de que a API .NET Core está rodando na URL configurada.
 
-To build the project run:
+## Execução
 
+Para executar em modo de desenvolvimento:
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+A aplicação estará disponível em `http://localhost:4200`
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Build para Produção
 
 ```bash
-ng test
+npm run build
 ```
 
-## Running end-to-end tests
+Os arquivos de build estarão na pasta `dist/`
 
-For end-to-end (e2e) testing, run:
+## Estrutura do Projeto
 
-```bash
-ng e2e
+```
+src/
+├── app/
+│   ├── components/
+│   │   └── lead-card/          # Componente do card de lead
+│   ├── models/
+│   │   └── lead.model.ts       # Interfaces e enums
+│   ├── services/
+│   │   └── lead.service.ts     # Serviço para API calls
+│   ├── app.component.*         # Componente principal com abas
+│   └── app.config.ts          # Configuração da aplicação
+├── environments/               # Configurações de ambiente
+└── styles.css                 # Estilos globais
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Tecnologias Utilizadas
 
-## Additional Resources
+- Angular 19 (Standalone Components)
+- TypeScript
+- RxJS
+- CSS Grid/Flexbox
+- HttpClient para consumo da API
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Design
+
+O design replica as imagens fornecidas no desafio:
+- Layout responsivo com duas abas
+- Cards estilizados para cada lead
+- Interface limpa e moderna
+- Feedback visual para ações do usuário

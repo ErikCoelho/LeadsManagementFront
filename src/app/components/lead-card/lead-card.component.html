@@ -1,0 +1,59 @@
+<div class="lead-card">
+  <div class="card-header">
+    <div class="contact-info">
+      <div class="avatar">{{ lead.firstName.charAt(0).toUpperCase() }}</div>
+      <div class="contact-details">
+        <h3 class="contact-name">
+          <ng-container *ngIf="isWaiting">{{ lead.firstName }}</ng-container>
+          <ng-container *ngIf="!isWaiting">{{ lead.firstName }} {{ lead.lastName }}</ng-container>
+        </h3>
+        <p class="contact-date">{{ formattedDate }}</p>
+      </div>
+    </div>
+    <div class="price-container">
+      <div class="price">${{ lead.price.toFixed(2) }}</div>
+      <div *ngIf="hasDiscount" class="discount-badge">
+        <span class="discount-icon">💰</span>
+        <span class="discount-text">10% discount</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="location-category">
+      <div class="location">
+        <span class="icon">📍</span>
+        <span>{{ lead.suburb }}</span>
+      </div>
+      <div class="category">
+        <span class="icon">{{ categoryIcon }}</span>
+        <span>{{ lead.category === 1 ? 'Waiting' : lead.category === 2 ? 'Accepted' : 'Rejected' }}</span>
+      </div>
+    </div>
+
+    <div class="lead-id">
+      <span class="label">Job ID:</span>
+      <span class="value">{{ lead.id.substring(0, 8) }}</span>
+    </div>
+
+    <div class="description">
+      <p>{{ lead.description }}</p>
+    </div>
+
+    <div *ngIf="!isWaiting" class="contact-details-extended">
+      <div class="contact-item">
+        <span class="icon">📞</span>
+        <span>{{ lead.phoneNumber }}</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">✉️</span>
+        <span>{{ lead.email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showActions && isWaiting" class="card-actions">
+    <button class="btn btn-accept" (click)="onAccept()">Accept</button>
+    <button class="btn btn-decline" (click)="onDecline()">Decline</button>
+  </div>
+</div> 
